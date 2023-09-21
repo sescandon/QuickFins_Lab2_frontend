@@ -1,8 +1,10 @@
 <template>
-  <div class="col-12 col-md-6 col-lg-4 text-center">
-    <h1><b>Nombre Curso:</b>{{ enrolled.courseName }}</h1>
-    <h3>{{ enrolled.courseDurationHours }}</h3>
-    <h6>{{ enrolled.role.roleName }}</h6>
+  <div class="cardCourse">
+    <h3>{{ enrolled.courseName }}</h3>
+    <div>
+      <h5>Duración: {{ enrolled.courseDurationHours }} horas</h5>
+      <h6>Rol: {{ enrolled.role.roleName }}</h6>
+    </div>
   </div>
 </template>
 
@@ -16,5 +18,21 @@ export default {
 </script>
 
 <style scoped>
+.cardCourse{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #B6C0CB;
+  background-color: #1E4D79;
+  text-align: left;
+  color: white;
+  border-radius: 8px;
+}
 
+.cardCourse div{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 </style>

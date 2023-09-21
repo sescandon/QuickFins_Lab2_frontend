@@ -1,9 +1,9 @@
 <template>
   <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
     <div class="mt-5">
-      <form class="border border-primary rounded form-inline" @submit="associate">
+      <form class="border border-primary rounded form-inline">
 
-        <h2 class="col-12 text-center text-primary mt-3 mb-5">Asocie su usuario con un nuevo rol</h2>
+        <h2 class="col-12 text-center text-primary mt-3 mb-5">Crear un nuevo curso</h2>
 
         <div class="form-group col-12">
           <label for="password" class="custom-label col-md-3">Contrase&ntilde;a</label>
@@ -33,7 +33,7 @@
   import axios from 'axios';
 
   export default {
-    name: "AddRole",
+    name: "add-course",
     data( ){
       return {
         password: '',
@@ -42,7 +42,7 @@
       }
     },
     beforeCreate( ){
-      const rolesPath = '/roles';
+      /* @todo const rolesPath = '/roles';
       axios
         .get( this.$store.state.backURL + rolesPath )
         .then( response => {
@@ -56,10 +56,10 @@
         .catch( response => {
           console.log(response, 'Pau error')
           alert( "No es posible conectar con el backend en este momento" );
-        });
+        });*/
     },
     methods: {
-      associate( event ){
+      /*@todo associate( event ){
         axios
           .post( this.buildURI( ), {
               password: this.password
@@ -88,7 +88,7 @@
       buildURI( ){
         let associatePath = "/registro/nuevo-rol/";
         return this.$store.state.backURL + associatePath + this.role;
-      }
+      }*/
     }
 
   }

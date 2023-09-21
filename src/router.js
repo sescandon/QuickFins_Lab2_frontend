@@ -6,6 +6,8 @@ import Home from "./views/Home";
 import AddRole from "./components/AddRole";
 import Courses from '@/views/Courses';
 import Roles from "@/components/Roles";
+import Integrantes from "@/components/Integrantes";
+import AddCourse from "@/components/AddCourse";
 
 Vue.use(Router);
 
@@ -27,7 +29,14 @@ export default new Router({
     {
       path: '/mis-cursos',
       name: 'courses',
-      component: Courses
+      component: Courses,
+      children: [
+        {
+          path: "nuevo-curso",
+          name: "add-course",
+          component: AddCourse
+        },
+      ]
     },
     {
       path: "/principal",
@@ -43,6 +52,11 @@ export default new Router({
           path: "roles",
           name: "roles",
           component: Roles
+        },
+        {
+          path: "integrantes",
+          name: "integrantes",
+          component: Integrantes
         }
       ]
     }
