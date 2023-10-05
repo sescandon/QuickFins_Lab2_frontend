@@ -4,7 +4,6 @@
     <div class="grid-courses">
       <Course v-for="enrolled in enrollments" :key="enrolled.courseId + '-' + enrolled.role.id" :enrolled="enrolled">
       </Course>
-      <p>View courses juju PAUUUU</p>
     </div>
   </div>
 </template>
@@ -15,6 +14,8 @@ import { getAuthenticationToken } from '@/dataStorage';
 import Course from '@/components/Course'
 
 const requestPath = '/mis-cursos';
+
+
 
 export default {
   name: "courses",

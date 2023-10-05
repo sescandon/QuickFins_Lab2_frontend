@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    backURL: 'http://localhost:8080' //Ojo PAU
+    backURL: 'http://localhost:2023' //Ojo PAU
   },
   mutations: {
 
