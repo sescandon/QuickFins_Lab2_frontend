@@ -2,7 +2,7 @@
   <div class="container-courses-home">
     <ul class="selector">
       <li @click="goCourses">Mis cursos</li>
-      <li @click="goNewCourse">Crear nuevo curso</li>
+      <li @click="goNewCourse" v-if="isProfessor === true">Crear nuevo curso</li>
     </ul>
     <div class="router-scroll">
       <router-view />
@@ -11,13 +11,35 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { getAuthenticationToken } from '@/dataStorage';
+
+
+const requestPath = '/mis-roles';
 
 export default {
   name: "courses-home",
   data() {
     return {
-      enrollments: []
+      isProfessor: false,
     }
+  },
+  beforeCreate() {
+    axios.get(this.$store.state.backURL + requestPath, { params: { access_token: getAuthenticationToken() } })
+      .then(response => {
+        if (response.status !== 200) {
+          alert('Error Obteniendo sus roles');
+        } else {
+          const roles = response.data.map(r => r.id);
+          console.log('PAUUUUU roles', roles)
+          if(roles.includes(2)){
+            this.isProfessor = true;
+          }
+        }
+      }).catch(error => {
+        alert('Error en la petición');
+        console.log(error);
+      });
   },
   methods: {
     goCourses(event) {

@@ -6,13 +6,13 @@
         <h2 class="col-12 text-center text-primary mt-3 mb-5">Crear un nuevo curso</h2>
 
         <div class="form-group col-12">
-          <label for="name" class="custom-label col-md-3">Nombre del Curso *</label>
+          <label for="name" class="custom-label col-md-3">Nombre del Curso*</label>
           <input id="name" class="form-control col-12 col-sm-10 col-md-7 offset-sm-1" type="text" placeholder="Nombre"
             v-model="name" required />
         </div>
 
         <div class="form-group col-12">
-          <label for="hours" class="custom-label col-md-3">Horas de Duración *</label>
+          <label for="hours" class="custom-label col-md-3">Horas de Duración*</label>
           <input id="hours" class="form-control col-12 col-sm-10 col-md-7 offset-sm-1" type="text"
             placeholder="Cantidad de horas" v-model="hours" required />
         </div>
@@ -52,7 +52,6 @@ export default {
           }
         }
         ).then(response => {
-          console.log("Daniel", response)
           if (response.status !== 201) {
             alert("Error en la petición. Intente nuevamente");
           } else {
@@ -62,7 +61,7 @@ export default {
           if (response.response.status === 401) {
             alert("¡Ups! Al parecer ocurrió un error de permisos");
           } else if (response.response.status === 400) {
-            alert("Por favor llena todos los items con *");
+            alert("Por favor llena todos los ítems con *");
           } else {
             alert("No es posible conectar con el backend en este momento");
           }
@@ -72,7 +71,7 @@ export default {
     buildURI() {
       let associatePath = "/profesor/crear-curso";
       return this.$store.state.backURL + associatePath;
-    }
+    },
   }
 
 }
