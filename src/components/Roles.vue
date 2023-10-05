@@ -1,40 +1,48 @@
 <template>
-  <div class="col-12 text-center">
-    <div v-for="role in roles" :key="role.id">
-      <h1>{{ role.roleName }}</h1>
+  <div class="container-roles">
+    <h2 class="screen-title">Tus Roles</h2>
+    <div class="col-12 text-center">
+      <div v-for="role in roles" :key="role.id">
+        <h1>{{ role.roleName }}</h1>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import {getAuthenticationToken} from '@/dataStorage';
+import { getAuthenticationToken } from '@/dataStorage';
 
 const requestPath = '/mis-roles';
 
 export default {
   name: 'Roles',
-  data( ){
+  data() {
     return {
-      roles: [{id: 1, roleName: 'My Role'}]
+      roles: [{ id: 1, roleName: 'My Role' }]
     }
   },
-  beforeCreate(){
-    axios.get( this.$store.state.backURL + requestPath, { params: { access_token: getAuthenticationToken( ) } } )
-        .then( response => {
-          if( response.status !== 200 ){
-            alert( 'Error Obteniendo sus roles' );
-          }else{
-            this.roles = response.data;
-          }
-        } ).catch( error => {
-          alert( 'Error en la petición' );
-          console.log( error );
-        } );
+  beforeCreate() {
+    axios.get(this.$store.state.backURL + requestPath, { params: { access_token: getAuthenticationToken() } })
+      .then(response => {
+        if (response.status !== 200) {
+          alert('Error Obteniendo sus roles');
+        } else {
+          this.roles = response.data;
+        }
+      }).catch(error => {
+        alert('Error en la petición');
+        console.log(error);
+      });
   }
 }
 </script>
 
 <style scoped>
-
+.container-roles{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
 </style>

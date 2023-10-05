@@ -1,4 +1,4 @@
-const tokenKey = 'token-ingesoft';
+const tokenKey = 'token';
 
 export function getAuthenticationToken(){
     return localStorage.getItem( tokenKey );

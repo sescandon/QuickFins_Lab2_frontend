@@ -1,16 +1,10 @@
 <template>
   <div class="container-courses">
-    <div class="name-courses" @click="goCourses">
-      Mis Cursos
-      <div>
-        <button @click="goNewCourse" class="btn btn-primary">Crear nuevo curso</button>
-        <button @click="goPrincipal" class="btn btn-secondary">Home</button>
-      </div>
-    </div>
-    <router-view />
+    <h2 class="screen-title">Mis Cursos</h2>
     <div class="grid-courses">
       <Course v-for="enrolled in enrollments" :key="enrolled.courseId + '-' + enrolled.role.id" :enrolled="enrolled">
       </Course>
+      <p>View courses juju PAUUUU</p>
     </div>
   </div>
 </template>
@@ -18,8 +12,7 @@
 <script>
 import axios from 'axios';
 import { getAuthenticationToken } from '@/dataStorage';
-import Course from "@/components/Course";
-
+import Course from '@/components/Course'
 
 const requestPath = '/mis-cursos';
 
@@ -53,10 +46,6 @@ export default {
       this.$router.push({ name: 'add-course' });
       event.preventDefault();
     },
-    goPrincipal(event){
-      this.$router.push({ name: 'home' });
-      event.preventDefault();
-    },
   }
 }
 </script>
@@ -67,38 +56,11 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow: hidden;
-}
-
-.container-courses button {
-  padding: 0px 10px;
-}
-
-.name-courses {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Verdana';
-  font-size: 18px;
-  color: #0078BD;
-  width: 100vw;
-  padding: 20px 140px 10px 140px;
-  height: 60px;
-  text-align: left;
-  cursor: pointer;
-  background-color: #DEE3E5;
-  box-shadow: -1px 10px 27px -11px rgba(0, 71, 112, 0.59);
-  -webkit-box-shadow: -1px 10px 27px -11px rgba(0, 71, 112, 0.59);
-  -moz-box-shadow: -1px 10px 27px -11px rgba(0, 71, 112, 0.59);
-}
-
-.name-courses div{
-  display: flex;
-  gap: 10px;
+  width: 100%;
 }
 
 .grid-courses {
   display: grid;
-  padding: 10px 140px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
   gap: 20px;
 }
